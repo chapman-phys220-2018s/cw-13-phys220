@@ -1,56 +1,32 @@
-# PHYS220 CW 11 
+# PHYS220 CW 12 
 
 **Author(s):** _\<your name(s)\>_
 
-[![Build Status](https://travis-ci.org/chapman-phys220-2016f/cw-11-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-phys220-2016f/cw-11-YOURNAME)
+[![Build Status](https://travis-ci.org/chapman-phys220-2016f/cw-12-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-phys220-2016f/cw-12-YOURNAME)
 
-**Due date:** 2016/11/15
+**Due date:** 2016/11/29
 
 ## Specification
 
 **Reminder: We have switched to Python3 officially.**
 
-For each of the following integration methods, discuss together on the white board to understand how they work for solving a first-order ordinary differential equation (ODE) $$u'(t) = f[t, u(t)]$$ on a discretized grid $(t_0, t_1, t_2, ..., t_N)$ with points $u_k = u(t_k)$ and grid spacing $\Delta t = t_{k+1} - t_k$. Write a notebook ```cw11-integration.ipynb``` that summarizes your conclusions and details what each method is doing.
+Consider a ball of mass $m$ with horizontal coordinate $x$ rolling in a double-well potential $V(x) = x^4/4 - x^2/2$. (This is sometimes called the "sombrero" potential. Plot it to see why, for $x\in[-1.5,1.5]$.) This potential produces a force $f_{\text{hat}}(x) = -V'(x) = -x^3 + x$ on the rolling ball. Suppose the ball also has slight friction, so experiences a drag force $f_{\text{drag}}(\dot{x}) = -\delta \dot{x}$. With these forces we thus expect the ball to roll down the sides of the sombrero potential and settle in one of the two stable wells. However, this is boring, so instead we are going to shake the hat back and force periodically with a driving force $f_{\text{drive}}(t) = F\cos(\omega t)$. For small driving forces $F$, this should simply jiggle the ball back and forth at the bottom of one of the stable wells. Our task will be to explore what happens for larger driving forces $F$.
 
-1. Euler's Method: 
-   
-   $u_{k+1} = u_k + \Delta t\, f[t_k, u_k]$ 
-1. Leapfrog (Midpoint) Method: 
-   
-   $u_{k+1} = u_{k-1} + 2\Delta t\, f[t_k, u_k]$  
-   
-   (How do you compute $u_1$?)
-1. Heun's (Trapezoid) Method: 
-   
-   $\tilde{u}_{k+1} = u_k + \Delta t\, f[t_k, u_k]$, 
-   
-   $u_{k+1} = u_k + (\Delta t/2)(f[t_k, u_k] + f[t_{k+1}, \tilde{u}_{k+1}])$  
-   
-   (Note the two steps - what is each doing?)
-1. 2nd-order Runge-Kutta Method: 
-   
-   $u_{k+1} = u_k + K_1$, 
-   
-   $K_1 = \Delta t\, f[t_k, u_k]$, 
-   
-   $K_2 = \Delta t\, f[t_k + \Delta t/2, u_k + K_1/2]$  
-   
-   (How does this differ from Heun's method?)
-1. 4th-order Runge-Kutta Method: 
-   
-   $u_{k+1} = u_k + (K_1 + 2K_2 + 2K_3 + K_4)/6$, 
-   
-   $K_1 = \Delta t\,f[t_k,u_k]$, 
-   
-   $K_2 = \Delta t\, f[t_k + \Delta t/2, u_k + K_1/2]$, 
-   
-   $K_3 = \Delta t\, f[t_k + \Delta t/2, u_k + K_2/2]$, 
-   
-   $K_4 = \Delta t\,f[t_k + \Delta t, u_k + K_3]$  
-   
-   (Note that final increment is a weighted average of four different increments - what is each doing? Why do you suppose the middle increments are more heavily weighted?)
+Note that according to Newton's second law, the ball must satisfy the equation of motion: $$m\ddot{x} = f_{\text{hat}}(x) + f_{\text{drag}}(\dot{x}) + f_{\text{drive}}(t) = x - x^3 - \delta \dot{x} + F\cos(\omega t)$$ 
+This system is known as a nonlinear "Duffing oscillator," and can be split into a set of two coupled first-order ODEs:
+$$\dot{x}(t) = y(t)$$
+$$m\dot{y}(t) = -\delta y(t) + x(t) - x^3(t) + F\cos(\omega t)$$
+Your task will be to solve these equations numerically, for $m=1$, $\delta = 0.25$, and $\omega = 1$. Use a time-step size of $\Delta t = 0.001$ with 4th-order Runge-Kutta for precision. Implement your code in a python file ```sombrero.py``` with suitable test functions.
 
-In practice, the 4th-order Runge-Kutta method is the most popular method for integrating ODEs, since it nicely balances the precision per time step with the total number of required computations.
+Write a notebook ```cw12-duffing.ipynb``` that summarizes the following investigations.
+
+1. For $F = 0.18$, plot $x(t)$ for $t\in[0,2\pi\, 50]$, with $x(0) = -0.9$ and $y(0) = 0$. Plot the parametric curve $(x(t),y(t))$ in the x-y plane for the same time range.  Plot a scatter plot of the points $(x(t),y(t))$, with specific $t = n 2\pi$ for $n = 0,1,\ldots,50$. (This last type of plot is known as a "Poincare section" of the parametric curve.)  Interpret your results.
+1. Repeat the first question, but for $x(0) = 0.9$ and $y(0) = 0$.  What is different?  Interpret your results.
+1. Repeat the first question, but for $F = 0.25$, $x(0) = 0.2$, and $y(0) = 0.1$.  What is different?  Plot what happens if you change to $x(0) = 0.201$. How do you interpret this physically?
+1. Repeat the first question, but for $F = 0.4$, $x(0) = 0$, and $y(0) = 0$.  What is different now?  What happens when you tweak the initial conditions?  How do you interpret this physically?
+1. For the previous problem, extend the time range to $t\in[0,2\pi\, 1000]$.  What is the structure of the Poincare section?
+
+Your homework this week will be to finish this classwork assignment, and then use it to create high-resolution plots of the Poincare section.
 
 ## Assessment
 
