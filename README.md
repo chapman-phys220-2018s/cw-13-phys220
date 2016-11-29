@@ -16,24 +16,24 @@ In this assignment, we will explore the exciting new development in python of [`
 
 ```python
 import numpy as np
-#import numba as nb
+#import numba as nb  #uncomment for numba
 import matplotlib.pyplot as plt
 %matplotlib inline
 
 def julia(c):
-    #@nb.vectorize
+    @np.vectorize  #comment for numba
+    #@nb.vectorize #uncomment for numba
     def j(z):
         for n in range(100):
             z = z**2 + c
             if abs(z) > 2:
                 return n
         return 0
-    #return j              #uncomment for numba
-    return np.vectorize(j) #comment for numba
+    return j
 
 j = julia(0.345 + 0.45j)
 
-#@nb.jit
+#@nb.jit  #uncomment for numba
 def cplane(min=-1.5, max=1.5, points=10000):
     r = np.linspace(-1.5, 1.5, 10000)
     x, y = np.meshgrid(r,r)
