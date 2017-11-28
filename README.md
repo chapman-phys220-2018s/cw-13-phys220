@@ -1,14 +1,10 @@
 # PHYS220 CW 13 
 
-**Author(s):** _\<your name(s)\>_
+**Author(s):** **CHANGEME**
 
-[![Build Status](https://travis-ci.org/chapman-phys220-2016f/cw-13-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-phys220-2016f/cw-13-YOURNAME)
-
-**Due date:** 2016/12/06
+[![Build Status](https://travis-ci.org/chapman-phys220-2017f/cw-13-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-phys220-2017f/cw-13-YOURNAME)
 
 ## Specification
-
-**Reminder: We have switched to Python3 officially.**
 
 In this assignment, we will explore the exciting new development in python of [```numba```](http://numba.pydata.org/), which is a just-in-time (JIT) compiler optimized for python's ```numpy``` library. In short, ```numba``` interprets python code and converts it into machine code before executing it. This means that code that is run repeatedly (such as vectorized code) will receive a dramatic speedup over raw python code. 
 
@@ -53,7 +49,7 @@ plt.show()
 
 As written, this will use ```numpy``` in a vectorized way as we have been using in class so far. Run the code and note how long the timed portions take. Then uncomment the ```@nb``` lines to enable ```numba```. Rerun the code and compare the results of the timings. (The ```@nb``` lines are called "decorators" and modify the subsequent function definitions to add functionality, in this case just-in-time compilation via ```numba```.)
 
-* Copy your CW12 into this repository and modify the code base to use ```numba```. Are you able to speed up the run time of your Runge-Kutta integration?
+* Copy your CW12 into this repository and modify your code to use ```numba```. Are you able to speed up the run time of your Runge-Kutta integration? Speculate why or why not.
 
 ## Assessment
 
