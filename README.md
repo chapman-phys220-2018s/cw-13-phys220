@@ -1,8 +1,8 @@
 # PHYS220 CW 13 
 
-**Author(s):** **CHANGEME**
+**Author(s):** **Daniel Chang**
 
-[![Build Status](https://travis-ci.org/chapman-phys220-2017f/cw-13-YOURNAME.svg?branch=master)](https://travis-ci.org/chapman-phys220-2017f/cw-13-YOURNAME)
+[![Build Status](https://travis-ci.com/chapman-phys220-2018s/cw-13-phys220.svg?branch=master)](https://travis-ci.com/chapman-phys220-2018s/cw-13-phys220)
 
 ## Specification
 
@@ -55,7 +55,7 @@ As written, this will use ```numpy``` in a vectorized way as we have been using 
 
 Analyze in this section what you found useful about this assignment in your own words. Include any lingering questions or comments that you may have.
 
-**CHANGEME**
+**Cool tool to learn at this point because a lot of the code we are running can take quite awhile to work now. I am having some issues with it working for my final, but this is a neat tool. -Daniel**
 
 ## Honor Pledge
 
@@ -66,4 +66,4 @@ I pledge that all the work in this repository is my own with only the following 
 
 Signed,
 
-**YOURNAME**
+**Daniel Chang**
