@@ -1,6 +1,6 @@
 # PHYS220 CW 13 
 
-**Author(s):** **Daniel Chang**
+**Author(s):** **Daniel Chang, Myranda Hoggatt**
 
 [![Build Status](https://travis-ci.com/chapman-phys220-2018s/cw-13-phys220.svg?branch=master)](https://travis-ci.com/chapman-phys220-2018s/cw-13-phys220)
 
@@ -57,6 +57,8 @@ Analyze in this section what you found useful about this assignment in your own 
 
 **Cool tool to learn at this point because a lot of the code we are running can take quite awhile to work now. I am having some issues with it working for my final, but this is a neat tool. -Daniel**
 
+**I liked learning how to use the nb.jit in order to speed up code. Wish we would have seen it earlier! -MH**
+
 ## Honor Pledge
 
 I pledge that all the work in this repository is my own with only the following exceptions:
@@ -66,4 +68,4 @@ I pledge that all the work in this repository is my own with only the following 
 
 Signed,
 
-**Daniel Chang**
+**Daniel Chang, Myranda Hoggatt**
